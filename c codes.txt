@@ -1,0 +1,183 @@
+1.C Hello World Program
+
+#include <stdio.h>
+int main()
+{
+ 
+    
+    printf("Hello World");
+ 
+    return 0;
+}
+
+
+
+2.C program to Check Whether a Number is Positive or Negative or Zero
+
+#include <stdio.h> 
+
+int main() 
+{ 
+	int A; 
+
+	printf("Enter the number A: "); 
+	scanf("%d", &A); 
+
+	if (A > 0) 
+		printf("%d is positive.", A); 
+	else if (A < 0) 
+		printf("%d is negative.", A); 
+	else if (A == 0) 
+		printf("%d is zero.", A); 
+
+	return 0; 
+} 
+
+3.Half Pyramid Pattern of Numbers
+
+// C program to print right half pyramid pattern of star 
+#include <stdio.h> 
+
+int main() 
+{ 
+	int rows; 
+	printf("Number of rows: "); 
+	scanf("%d", &rows); 
+
+	// first loop for printing rows 
+	for (int i = 1; i <= rows; i++) { 
+
+		// second loop for printing similar number in each 
+		// rows 
+		for (int j = 1; j <= i; j++) { 
+			printf("%d ", i); 
+		} 
+		printf("\n"); 
+	} 
+	return 0; 
+}
+
+4.C Program To Check Prime Number By Creating a Function
+
+#include <stdio.h> 
+
+// Defining the function 
+int primenumber(int number) 
+{ 
+	int i; 
+	for (i = 2; i <= number / 2; i++) 
+	{ 
+		if (number % i != 0) 
+			continue; 
+		else
+			return 1; 
+	} 
+	return 0; 
+} 
+ 
+int main() 
+{ 
+	int num = 7, res = 0; 
+	
+	// Calling the function 
+	res = primenumber(num); 
+	if (res == 0) 
+		printf("%d is a prime number", num); 
+	else
+		printf("%d is not a prime number", num); 
+}
+
+5.C Program to Find Largest Element in an Array
+
+#include <stdio.h> 
+ 
+int largest(int arr[], int n) 
+{ 
+	int i; 
+	int max = arr[0]; 
+
+	for (i = 1; i < n; i++) 
+		if (arr[i] > max) 
+			max = arr[i]; 
+
+	return max; 
+} 
+
+
+int main() 
+{ 
+	int arr[] = { 10, 324, 45, 90, 9808 }; 
+	int n = sizeof(arr) / sizeof(arr[0]); 
+	printf("Largest in given array is %d", largest(arr, n)); 
+	return 0; 
+}
+6.C Program to Add 2 Binary String
+
+#include <stdio.h>
+#include <string.h>
+
+void sum(char b1[], char b2[], int l1, int l2)
+{
+	int carry = 0, temp, num1, num2, i;
+	char result[100];
+
+	result[l1 + 1] = '\0';
+	while (l2 > 0) {
+		num1 = b1[l1 - 1] - '0';
+		num2 = b2[l2 - 1] - '0';
+		temp = num1 + num2 + carry;
+		if (temp >= 2) {
+			carry = 1;
+			temp = temp % 2;
+		}
+		result[l1] = temp + '0';
+		l1--;
+		l2--;
+	}
+	while (l1 - 1 >= 0) {
+		temp = b1[l1 - 1] + carry - '0';
+		if (temp >= 2) {
+			carry = 1;
+			temp = temp % 2;
+		}
+		result[l1] = temp + '0';
+		l1--;
+	}
+
+	if (carry) {
+		result[0] = '1';
+	}
+	else {
+	
+		for (i = 0; i < strlen(result) - 1; i++) {
+			result[i] = result[i + 1];
+		}
+		result[strlen(result) - 1] = '\0';
+	}
+
+	printf("%s + %s = %s\n", b1, b2, result);
+}
+
+int main()
+{
+	char b1[100] = "11", b2[100] = "11";
+	int l1, l2;
+
+	printf("Enter binary number 1: ");
+	printf("%s \n", b1);
+	printf("Enter binary number 2: ");
+	printf("%s \n", b2);
+	l1 = strlen(b1);
+	l2 = strlen(b2);
+
+	if (l1 > l2) {
+		sum(b1, b2, l1, l2);
+	}
+	else {
+		sum(b2, b1, l2, l1);
+	}
+
+	return 0;
+}
+
+
